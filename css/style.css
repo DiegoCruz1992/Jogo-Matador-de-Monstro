@@ -1,0 +1,197 @@
+body {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: center;
+  background-image: url(../img/fundodatela4.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/*Jogadores*/
+
+.box {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 22px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 4px -2px #989898;
+}
+
+#boxjogadores {
+  background-image: url('../img/fondo1.jpg');
+  background-size: contain;
+  background-position: center center;
+  height: 500px;
+}
+
+p {
+  text-align: center;
+}
+
+/*Tela de inicio*/
+.teladeinicio {
+  width: 58.4rem;
+  height: 31.4rem;
+  position: absolute;
+  left: 205px;
+  top: 20px;
+}
+.telagameover {
+  width: 58.4rem;
+  height: 31.4rem;
+  position: absolute;
+  left: 205px;
+  top: 20px;
+}
+.telagameoverplayer {
+  width: 58.4rem;
+  height: 31.4rem;
+  position: absolute;
+  left: 205px;
+  top: 20px;
+}
+.telaWin {
+  width: 58.4rem;
+  height: 31.4rem;
+  position: absolute;
+  left: 205px;
+  top: 20px;
+}
+
+.teladeinicio img {
+  width: 58.4rem;
+  height: 31.6rem;
+  z-index: 2000;
+}
+.telagameover img {
+  width: 58.4rem;
+  height: 31.6rem;
+  z-index: 4000;
+}
+.telaWin img {
+  width: 58.4rem;
+  height: 31.6rem;
+  z-index: 4000;
+}
+.telagameoverplayer img {
+  width: 58.4rem;
+  height: 31.6rem;
+  z-index: 4000;
+}
+
+.controledeAudio {
+  width: 250px;
+  height: 25px;
+}
+/*Tela de inicio*/
+
+/*Tela do jogo*/
+.titulo {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.porcentagem {
+  font-size: 16px;
+  margin: 5px;
+}
+
+.barra-progress1 {
+  height: 20px;
+  width: 400px;
+  border: 1px solid #000;
+}
+
+.progress1 {
+  background-color: green;
+  height: 100%;
+}
+
+.progress1.danger {
+  background-color: red;
+}
+
+.progress2 {
+  background-color: green;
+  height: 100%;
+}
+
+.progress2.danger {
+  background-color: red;
+}
+
+.progress2.amarelo {
+  background-color: yellow;
+}
+
+.barra-progress2 {
+  height: 20px;
+  width: 400px;
+  border: 1px solid #000;
+}
+
+.jogador {
+  margin: 2rem 2rem;
+}
+
+.imgGuerreiro {
+  width: 200px;
+  height: 200px;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+.imgmonstro {
+  width: 200px;
+  height: 200px;
+  margin-top: 40px;
+  margin-left: 140px;
+}
+.monstro {
+  margin: 2rem 2rem;
+}
+/*Tela do jogo*/
+
+/*botões*/
+
+.divbotao {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  background-image: url('../img/fundobtn3.jpg');
+  background-size: auto;
+  background-position: center center;
+}
+
+button {
+  height: 30px;
+  margin: 20px 20px;
+  color: white;
+  border: 1px solid;
+  border-radius: 10px;
+  width: 100px;
+}
+
+.btnataque {
+  background-color: red;
+}
+.btnmanual {
+  background-color: black;
+}
+.btnespecial {
+  background-color: orange;
+}
+.btncurar {
+  background-color: green;
+}
+.btndesistir {
+  background-color: black;
+}
+
+/*botões*/

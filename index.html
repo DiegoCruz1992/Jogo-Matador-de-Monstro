@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Sweet Alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="CSS/style.css" />
+
+    <title>Matador de Monstros</title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <!--Tela de inicio-->
+      <div class="teladeinicio" v-show="mudarbtn">
+        <img src="img/caveira.gif" alt="" />
+      </div>
+      <!--Tela de inicio-->
+      <div class="box" id="boxjogadores">
+        <!--Div do jogador-->
+        <div class="jogador">
+          <p class="titulo">Jogador</p>
+          <div class="barra-progress1">
+            <div
+              class="progress1"
+              :class="{danger: playerlife < 20}"
+              :style="{width: playerlife + '%'}"
+            ></div>
+          </div>
+          <p class="porcentagem">{{playerlife}}%</p>
+          <div>
+            <img class="imgGuerreiro" src="img/guerreiro.jfif" alt="" />
+          </div>
+        </div>
+        <!--Div do jogador-->
+        <!--Div do Montro-->
+        <div class="monstro">
+          <p class="titulo">Monstro</p>
+          <div class="barra-progress2">
+            <div
+              class="progress2"
+              :class="{danger: monsterlife < 20}"
+              :style="{width: monsterlife + '%'}"
+            ></div>
+          </div>
+          <p class="porcentagem">{{monsterlife}}%</p>
+          <div>
+            <img class="imgmonstro" src="img/monstro.jfif" alt="" />
+          </div>
+        </div>
+        <!--Div do Montro-->
+        <!--Audio inicial-->
+        <audio
+          class="controledeAudio"
+          src="audio/audiodoinicio.mp3"
+          type="audio/mp3"
+          id="audio"
+          preload="auto"
+          autoplay
+          loop
+        ></audio>
+        <!--Audio inicial-->
+      </div>
+      <!--Box dos Botões-->
+      <div class="box">
+        <div class="divbotao" v-show="mudarbtn">
+          <button
+            v-show="tirarbotao"
+            class="btnataque"
+            @click="iniciarJogo"
+            v-on:Keydown.enter="iniciarAudio"
+          >
+            Play
+          </button>
+          <button class="btnmanual" @click="mostrarManual" v-show="tirarbotao">
+            Manual
+          </button>
+        </div>
+        <div class="divbotao" v-show="!mudarbtn">
+          <button class="btnataque" @click="Dano">Ataque</button>
+          <button class="btnespecial" @click="usarespecial">
+            Usar Especial
+          </button>
+          <button class="btncurar" @click="usarcura">Curar</button>
+          <button class="btndesistir" @click="desistir">Desistir</button>
+        </div>
+        <!--Div Game Over-->
+        <div class="telagameover" v-show="gameover">
+          <!--Audio Game Over-->
+          <audio
+            class="controledeAudio"
+            src="audio/game-over-audio.mp3"
+            type="audio/mp3"
+            id="audiogameover"
+            preload="auto"
+            autoplay
+            loop
+          ></audio>
+          <img src="img/game-over.gif" alt="" />
+        </div>
+        <div class="telagameoverplayer" v-show="gameoverplayer">
+          <!--Audio Game Over-->
+          <audio
+            class="controledeAudio"
+            src="audio/game-over-player.mp3"
+            type="audio/mp3"
+            id="audiogameoverPlayer"
+            preload="auto"
+            autoplay
+            loop
+          ></audio>
+          <img src="img/PlayerGame-Over.gif" alt="" />
+        </div>
+        <div class="telaWin" v-show="gamewin">
+          <!--Audio Game Over-->
+          <audio
+            class="controledeAudio"
+            src="audio/audio-Win.mp3"
+            type="audio/mp3"
+            id="audioWin"
+            preload="auto"
+            autoplay
+            loop
+          ></audio>
+          <img src="img/Win.gif" alt="" />
+        </div>
+        <audio
+          class="controledeAudio"
+          src="audio/efeitosonoroPorrada.mp3"
+          type="audio/mp3"
+          id="audioporrada"
+          preload="auto"
+        ></audio>
+        <audio
+          class="controledeAudio"
+          src="audio/porradaespecial.mp3"
+          type="audio/mp3"
+          id="porradaespecial"
+          preload="auto"
+        ></audio>
+        <audio
+          class="controledeAudio"
+          src="audio/audiocura.mp3"
+          type="audio/mp3"
+          id="curar"
+          preload="auto"
+        ></audio>
+      </div>
+      <!--Box dos Botões-->
+    </div>
+  </body>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        mudarbtn: true,
+        tirarbotao: true,
+        gameover: false,
+        gameoverplayer: false,
+        gamewin: false,
+        playerlife: 100,
+        monsterlife: 100,
+        contadorespecial: 0,
+        contadorcura: 0
+      },
+      methods: {
+        iniciarJogo() {
+          var myAudio = document.querySelector('#audio')
+
+          if (this.mudarbtn == true) {
+            this.mudarbtn = false
+            myAudio.play()
+            myAudio.volume = 0.1
+          } else {
+            this.mudarbtn = true
+            myAudio.pause()
+          }
+        },
+
+        mostrarManual() {
+          swal(
+            'Manual do jogo',
+            'Objetivo: usar o ataque bara baixar a vida monstro até 0. Ataque: Faz com que ambos se ataquem.  Ataque Escpecial: Faz com que ambos se ataquem dando uma pequena vantagem de dano para o jogador.(Obs. Ataque Especial só pode ser usado 3 vezes!). Cura: Realiza uma pequena quantidade de cura aleatóriamente no jogador ou o monstro. (Obs. A cura só pode ser usado 3 vezes!). Desistir: Volta para a tela inicial para recomeçar o jogo.'
+          )
+        },
+
+        Dano() {
+          var myAudiogameover = document.querySelector('#audiogameoverPlayer')
+          var myAudiowin = document.querySelector('#audioWin')
+          var myAudio = document.querySelector('#audio')
+          var porrada = document.querySelector('#audioporrada')
+          let valorplayer = Math.floor(Math.random() * 10 + 8)
+          let valormonster = Math.floor(Math.random() * 8 + 5)
+
+          this.playerlife = `${parseInt(this.playerlife) - valorplayer}`
+          this.monsterlife = `${parseInt(this.monsterlife) - valormonster}`
+
+          porrada.play()
+
+          if (this.playerlife <= '0') {
+            this.playerlife = 0
+            this.gameoverplayer = true
+            this.tirarbotao = false
+            myAudio.pause()
+            myAudiogameover.play()
+
+            setTimeout(() => {
+              this.gameoverplayer = false
+              myAudiogameover.pause()
+              myAudiogameover.volume = 0.1
+              this.tirarbotao = true
+            }, 5000)
+
+            this.mudarbtn = true
+            this.playerlife = 100
+            this.monsterlife = 100
+            this.contadorcura = 0
+            this.contadorespecial = 0
+          }
+          if (this.monsterlife <= '0') {
+            this.monsterlife = 0
+            this.gamewin = true
+            this.tirarbotao = false
+            myAudio.pause()
+            myAudiowin.play()
+
+            setTimeout(() => {
+              this.gamewin = false
+              myAudiowin.pause()
+              myAudiowin.volume = 0.1
+              this.tirarbotao = true
+            }, 5000)
+
+            this.mudarbtn = true
+            this.playerlife = 100
+            this.monsterlife = 100
+            this.contadorcura = 0
+            this.contadorespecial = 0
+          }
+        },
+
+        usarespecial() {
+          let valorplayer = Math.floor(Math.random() * 6 + 1)
+          let valormonster = Math.floor(Math.random() * 10 + 8)
+          var porradaespecial = document.querySelector('#porradaespecial')
+
+          if (this.contadorespecial < 3) porradaespecial.play()
+
+          if (this.contadorespecial < 3) {
+            this.playerlife = `${parseInt(this.playerlife) - valorplayer}`
+            this.monsterlife = `${parseInt(this.monsterlife) - valormonster}`
+
+            if (this.playerlife < '0') this.playerlife = 0
+            if (this.monsterlife < '0') this.monsterlife = 0
+          } else {
+            swal('Limite de ataque especial alcançado!!!')
+          }
+          this.contadorespecial += 1
+        },
+
+        usarcura() {
+          let escolher = Math.floor(Math.random() * 2 + 1)
+          let valorcura = Math.floor(Math.random() * 5 + 1)
+          var Curarefeito = document.querySelector('#curar')
+
+          if (this.contadorcura < 3) Curarefeito.play()
+
+          if (this.contadorcura < 3) {
+            if (escolher == 1) {
+              this.playerlife = `${parseInt(this.playerlife) + valorcura}`
+              if (this.playerlife > 100) this.playerlife = 100
+            } else {
+              this.monsterlife = `${parseInt(this.monsterlife) + valorcura}`
+              if (this.monsterlife > 100) this.monsterlife = 100
+            }
+
+            if (this.playerlife < '0') this.playerlife = 0
+            if (this.monsterlife < '0') this.monsterlife = 0
+          } else {
+            swal('Limite do uso da cura alcançado!!!')
+          }
+          this.contadorcura += 1
+        },
+
+        desistir() {
+          var myAudiogameover = document.querySelector('#audiogameover')
+          var myAudio = document.querySelector('#audio')
+          this.gameover = true
+          this.tirarbotao = false
+          myAudio.pause()
+          myAudiogameover.play()
+
+          setTimeout(() => {
+            this.gameover = false
+            this.tirarbotao = true
+            myAudiogameover.pause()
+            myAudiogameover.volume = 0.1
+          }, 5000)
+
+          this.mudarbtn = true
+          this.playerlife = 100
+          this.monsterlife = 100
+          this.contadorcura = 0
+          this.contadorespecial = 0
+        }
+      }
+    })
+  </script>
+</html>
