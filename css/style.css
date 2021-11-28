@@ -39,30 +39,30 @@ p {
 .teladeinicio {
   width: 940px;
   height: 504px;
+  margin-left: -1px;
+  margin-top: -1px;
   position: absolute;
-  margin-left: 205px;
-  margin-top: 20px;
 }
 .telagameover {
   width: 940px;
   height: 504px;
+  margin-left: -1px;
+  margin-top: -1px;
   position: absolute;
-  margin-left: 205px;
-  margin-top: 20px;
 }
 .telagameoverplayer {
   width: 940px;
   height: 504px;
+  margin-left: -1px;
+  margin-top: -1px;
   position: absolute;
-  margin-left: 205px;
-  margin-top: 20px;
 }
 .telaWin {
   width: 940px;
   height: 504px;
+  margin-left: -1px;
+  margin-top: -1px;
   position: absolute;
-  margin-left: 205px;
-  margin-top: 20px;
 }
 
 .teladeinicio img {
