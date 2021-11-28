@@ -18,6 +18,45 @@
       <div class="teladeinicio" v-show="mudarbtn">
         <img src="img/caveira.gif" alt="" />
       </div>
+      <div class="telagameover" v-show="gameover">
+        <!--Audio Game Over-->
+        <audio
+          class="controledeAudio"
+          src="audio/game-over-audio.mp3"
+          type="audio/mp3"
+          id="audiogameover"
+          preload="auto"
+          autoplay
+          loop
+        ></audio>
+        <img src="img/game-over.gif" alt="" />
+      </div>
+      <div class="telagameoverplayer" v-show="gameoverplayer">
+        <!--Audio Game Over-->
+        <audio
+          class="controledeAudio"
+          src="audio/game-over-player.mp3"
+          type="audio/mp3"
+          id="audiogameoverPlayer"
+          preload="auto"
+          autoplay
+          loop
+        ></audio>
+        <img src="img/PlayerGame-Over.gif" alt="" />
+      </div>
+      <div class="telaWin" v-show="gamewin">
+        <!--Audio Game Over-->
+        <audio
+          class="controledeAudio"
+          src="audio/audio-Win.mp3"
+          type="audio/mp3"
+          id="audioWin"
+          preload="auto"
+          autoplay
+          loop
+        ></audio>
+        <img src="img/Win.gif" alt="" />
+      </div>
       <!--Tela de inicio-->
       <div class="box" id="boxjogadores">
         <!--Div do jogador-->
@@ -88,45 +127,7 @@
           <button class="btndesistir" @click="desistir">Desistir</button>
         </div>
         <!--Div Game Over-->
-        <div class="telagameover" v-show="gameover">
-          <!--Audio Game Over-->
-          <audio
-            class="controledeAudio"
-            src="audio/game-over-audio.mp3"
-            type="audio/mp3"
-            id="audiogameover"
-            preload="auto"
-            autoplay
-            loop
-          ></audio>
-          <img src="img/game-over.gif" alt="" />
-        </div>
-        <div class="telagameoverplayer" v-show="gameoverplayer">
-          <!--Audio Game Over-->
-          <audio
-            class="controledeAudio"
-            src="audio/game-over-player.mp3"
-            type="audio/mp3"
-            id="audiogameoverPlayer"
-            preload="auto"
-            autoplay
-            loop
-          ></audio>
-          <img src="img/PlayerGame-Over.gif" alt="" />
-        </div>
-        <div class="telaWin" v-show="gamewin">
-          <!--Audio Game Over-->
-          <audio
-            class="controledeAudio"
-            src="audio/audio-Win.mp3"
-            type="audio/mp3"
-            id="audioWin"
-            preload="auto"
-            autoplay
-            loop
-          ></audio>
-          <img src="img/Win.gif" alt="" />
-        </div>
+
         <audio
           class="controledeAudio"
           src="audio/efeitosonoroPorrada.mp3"

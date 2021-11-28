@@ -39,29 +39,29 @@ p {
   width: 58.4rem;
   height: 31.4rem;
   position: absolute;
-  left: 205px;
-  top: 20px;
+  margin-left: 205px;
+  margin-top: 20px;
 }
 .telagameover {
   width: 58.4rem;
   height: 31.4rem;
   position: absolute;
-  left: 205px;
-  top: 20px;
+  margin-left: 205px;
+  margin-top: 20px;
 }
 .telagameoverplayer {
   width: 58.4rem;
   height: 31.4rem;
   position: absolute;
-  left: 205px;
-  top: 20px;
+  margin-left: 205px;
+  margin-top: 20px;
 }
 .telaWin {
   width: 58.4rem;
   height: 31.4rem;
   position: absolute;
-  left: 205px;
-  top: 20px;
+  margin-left: 205px;
+  margin-top: 20px;
 }
 
 .teladeinicio img {
