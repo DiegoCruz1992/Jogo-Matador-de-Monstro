@@ -5,7 +5,8 @@ body {
 .container {
   display: grid;
   align-items: flex-start;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
   background-image: url(../img/fundodatela4.jpg);
   background-repeat: no-repeat;
@@ -36,52 +37,52 @@ p {
 
 /*Tela de inicio*/
 .teladeinicio {
-  width: 58.4rem;
-  height: 31.4rem;
+  width: 940px;
+  height: 504px;
   position: absolute;
   margin-left: 205px;
   margin-top: 20px;
 }
 .telagameover {
-  width: 58.4rem;
-  height: 31.4rem;
+  width: 940px;
+  height: 504px;
   position: absolute;
   margin-left: 205px;
   margin-top: 20px;
 }
 .telagameoverplayer {
-  width: 58.4rem;
-  height: 31.4rem;
+  width: 940px;
+  height: 504px;
   position: absolute;
   margin-left: 205px;
   margin-top: 20px;
 }
 .telaWin {
-  width: 58.4rem;
-  height: 31.4rem;
+  width: 940px;
+  height: 504px;
   position: absolute;
   margin-left: 205px;
   margin-top: 20px;
 }
 
 .teladeinicio img {
-  width: 58.4rem;
-  height: 31.6rem;
+  width: 942px;
+  height: 505px;
   z-index: 2000;
 }
 .telagameover img {
-  width: 58.4rem;
-  height: 31.6rem;
+  width: 942px;
+  height: 505px;
   z-index: 4000;
 }
 .telaWin img {
-  width: 58.4rem;
-  height: 31.6rem;
+  width: 942px;
+  height: 505px;
   z-index: 4000;
 }
 .telagameoverplayer img {
-  width: 58.4rem;
-  height: 31.6rem;
+  width: 942px;
+  height: 505px;
   z-index: 4000;
 }
 
